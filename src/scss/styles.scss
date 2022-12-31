@@ -1,0 +1,121 @@
+@import "~bootstrap/dist/css/bootstrap";
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+
+$primary: #01acfb;
+
+:root {
+  --bg-prim: $primary;
+  --box-shadow-spread: 0 0 5px rgba(23, 24, 24, 0.05),
+    0 1px 2px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(63, 63, 68, 0.05),
+    0 1px 3px 0 rgba(63, 63, 68, 0.15);
+  --box-shadow-pop: 0 8px 6px -6px rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.1) 0px -2px 6px -1px;
+  --fs-small: 0.875rem;
+  --fs-smaller: 0.75rem;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.fs-small {
+  font-size: var(--fs-small);
+}
+
+.header-bg {
+  background-color: $primary;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.text-primary-custom {
+  color: $primary;
+}
+
+.web-content {
+  width: 100%;
+
+  input,
+  select {
+    background-color: #f9f9f9;
+    border: 1px solid #efefef;
+    color: #000;
+    -moz-transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+  }
+}
+
+@media (min-width: 992px) {
+  .web-content {
+    background-color: #f7f7f7;
+    height: 100vh;
+    overflow: scroll;
+
+    .web-content-inner {
+      width: 890px;
+      margin: 1rem auto auto auto;
+      overflow: hidden;
+      background-color: #fff;
+      border-radius: 17px;
+    }
+  }
+}
+
+.btn-primary-custom {
+  font-size: 1.25rem;
+  @include button-variant(
+    $primary,
+    darken($primary, 7.5%),
+    darken($primary, 10%),
+    lighten($primary, 5%),
+    lighten($primary, 10%),
+    darken($primary, 30%)
+  );
+}
+
+.btn-outline-primary-custom {
+  color: inherit;
+  @include button-outline-variant(
+    $primary,
+    #ffffff,
+    lighten($primary, 5%),
+    $primary
+  );
+}
+
+.results-card {
+  border: 1.5px solid transparent;
+  box-shadow: var(--box-shadow-spread);
+  cursor: pointer;
+
+  .plane {
+    transform: rotate(90deg);
+  }
+  .time-info {
+    font-size: var(--fs-smaller);
+  }
+
+  .carrier {
+    color: $primary;
+    text-align: left;
+    font-weight: 500;
+    font-size: 1.25rem;
+  }
+  .price {
+    text-align: right;
+    font-weight: 500;
+  }
+
+  &:hover {
+    border: 1.5px solid $primary;
+    box-shadow: var(--box-shadow-pop);
+    .carrier {
+      color: inherit;
+    }
+  }
+}
